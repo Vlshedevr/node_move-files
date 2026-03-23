@@ -41,6 +41,14 @@ function moveFiles() {
     }
   }
 
+  const parentDir = path.dirname(finalPath);
+
+  if (!fs.existsSync(parentDir)) {
+    console.error('Destination directory does not exist!');
+
+    return;
+  }
+
   try {
     fs.renameSync(src, finalPath);
   } catch (err) {
